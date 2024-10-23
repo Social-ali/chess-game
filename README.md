@@ -1,5 +1,4 @@
 # chess-game
-# Chess Game
 
 A chess game built with React and Vite, providing an interactive platform for two players to enjoy classic chess.
 
