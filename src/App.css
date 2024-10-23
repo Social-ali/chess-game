@@ -1,0 +1,139 @@
+* {
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+    background-color: #242424;
+}
+
+body,
+.scrollelement {
+    scrollbar-color: #36393f, #c4c4c4;
+}
+
+body::-webkit-scrollbar,
+.scrollelement::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+body::-webkit-scrollbar-track,
+.scrollelement::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb,
+.scrollelement::-webkit-scrollbar-thumb {
+    background-color: #36393f;
+    border-radius: 6px;
+}
+
+#bg {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    opacity: 0.25;
+}
+
+.container {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 22% 110vh 20%;
+    grid-template-rows: 50% 0.5fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "ll board u"
+        "mm board u"
+        "bb board u";
+}
+
+#stockfish {
+    grid-area: u;
+    color: white;
+}
+
+/* If screen is less than 1270px, change grid so it is stacked on top of each other */
+@media screen and (max-width: 1270px) {
+    .container {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: "ll" "board" "bb" "mm" "u";
+        overflow-y: auto;
+    }
+    #evalbar {
+        display: none;
+    }
+    #stockfish {
+        display: block;
+    }
+}
+
+.board {
+    overflow: hidden;
+}
+
+.middle {
+    text-align: center;
+    grid-area: mm;
+}
+
+.left {
+    text-align: center;
+    z-index: 10;
+    grid-area: ll;
+}
+
+.board {
+    grid-area: board;
+}
+
+.bottom {
+    text-align: center;
+    grid-area: bb;
+}
+
+#evalbar {
+    height: 98vh;
+    width: 10%;
+    grid-area: u;
+}
+
+.left button {
+    /* give buttons a nice style */
+    background-color: #5f5f5f;
+    border: 2px solid #bbbbbb;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+/* give left button a hover effect */
+.left button:hover:not(#start) {
+    transition: all 250ms ease-in-out;
+    background-color: #b9b9b9;
+    color: black;
+}
+
+#alert {
+    color: red;
+    font-weight: 800;
+    font-size: 36px;
+}
+
+.title {
+    color: white;
+    font-size: 36px;
+}
+
+.history {
+    color: white;
+    overflow-y: auto;
+    max-width: 95%;
+    max-height: 100px;
+}
